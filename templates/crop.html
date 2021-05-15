@@ -1,0 +1,130 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-eOJMYsd53ii+scO/bJGFsiCZc+5NDVN2yr8+0RDqr0Ql0h+rP48ckxlpbzKgwra6" crossorigin="anonymous">
+<title>crop prediction!</title>
+  </head>
+  <body style="background-image: url(/static/crop4.png); background-attachment: fixed;">
+    <nav class="navbar navbar-expand-lg navbar-dark bg-primary">
+        <div class="container-fluid">
+          <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+              <li class="nav-item">
+                <a class="nav-link" aria-current="page" href="../">Home</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link active" href="#">crop</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="../fertilizer" onclick="fert_pred()">fertilizer</a>
+              </li>
+            </ul>
+            <form class="d-flex">
+              <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
+              <button class="btn btn-outline-success" type="submit">Search</button>
+            </form>
+          </div>
+        </div>
+      </nav>
+
+    <!-- Optional JavaScript; choose one of the two! -->
+
+    <!-- Option 1: Bootstrap Bundle with Popper -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta3/dist/js/bootstrap.bundle.min.js" integrity="sha384-JEW9xMcG8R+pH31jmWH6WWP0WintQrMb4s7ZOdauHnUtxwoG2vI5DkLtS3qm9Ekf" crossorigin="anonymous"></script>
+
+    <!-- Option 2: Separate Popper and Bootstrap JS -->
+    <!--
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.1/dist/umd/popper.min.js" integrity="sha384-SR1sx49pcuLnqZUnnPwx6FCym0wLsk5JZuNx2bPPENzswTNFaQU1RDvt3wT4gWFG" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta3/dist/js/bootstrap.min.js" integrity="sha384-j0CNLUeiqtyaRmlzUHCPZ+Gy5fQu0dQ6eZ/xAww941Ai1SxSY+0EQqNXNE6DZiVc" crossorigin="anonymous"></script>
+
+
+    <!-- Optional JavaScript; choose one of the two! -->
+
+    <!-- Option 1: Bootstrap Bundle with Popper -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta3/dist/js/bootstrap.bundle.min.js" integrity="sha384-JEW9xMcG8R+pH31jmWH6WWP0WintQrMb4s7ZOdauHnUtxwoG2vI5DkLtS3qm9Ekf" crossorigin="anonymous"></script>
+
+    <!-- Option 2: Separate Popper and Bootstrap JS -->
+    <!--
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.1/dist/umd/popper.min.js" integrity="sha384-SR1sx49pcuLnqZUnnPwx6FCym0wLsk5JZuNx2bPPENzswTNFaQU1RDvt3wT4gWFG" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta3/dist/js/bootstrap.min.js" integrity="sha384-j0CNLUeiqtyaRmlzUHCPZ+Gy5fQu0dQ6eZ/xAww941Ai1SxSY+0EQqNXNE6DZiVc" crossorigin="anonymous"></script>
+    -->
+
+    <div style="
+    width: 350px;
+    height: 50rem;
+    margin: 0px auto;
+    color: black;
+    border-radius: 25px;
+    padding: 10px 10px;
+  ">
+  <form method="POST" action="/crop_predict">
+    <div class="form-group">
+      <label for="Nitrogen" style="font-size: 17px"><b>Nitrogen</b></label>
+      <input type="number" class="form-control" id="nitrogen" name="nitrogen" placeholder="Enter the value (example:50)" style="font-weight: bold" required="">
+    </div>
+    <div class="form-group">
+      <label for="Phosphorous" style="font-size: 17px"><b>Phosphorous</b></label>
+      <input type="number" class="form-control" id="phosphorous" name="phosphorous" placeholder="Enter the value (example:50)" style="font-weight: bold" required="">
+    </div>
+    <div class="form-group">
+      <label for="humidity" style="font-size: 17px"><b>humidity</b></label>
+      <input type="number" step="0.01" class="form-control" id="humidity" name="humidity" placeholder="Enter the value" style="font-weight: bold" required="">
+    </div>
+    <div class="form-group">
+      <label for="temperature" style="font-size: 17px"><b>temperature</b></label>
+      <input type="number" step="0.01" class="form-control" id="temperature" name="temperature" placeholder="Enter the value" style="font-weight: bold" required="">
+    </div>
+
+    <div class="form-group">
+      <label for="Pottasium" style="font-size: 17px"><b>Pottasium</b></label>
+      <input type="number" class="form-control" id="pottasium" name="pottasium" placeholder="Enter the value (example:50)" style="font-weight: bold" required="">
+    </div>
+    <div class="form-group">
+      <label for="ph" style="font-size: 17px"><b>ph level</b></label>
+      <input type="number" step="0.01" class="form-control" id="ph" name="ph" placeholder="Enter the value" style="font-weight: bold" required="">
+    </div>
+    <div class="form-group">
+      <label for="Rainfall" style="font-size: 17px"><b>Rainfall (in mm)</b></label>
+      <input type="number" step="0.01" class="form-control" id="rainfall" name="rainfall" placeholder="Enter the value" style="font-weight: bold" required="">
+    </div>
+    <div class="form-group">
+      <label for="soil_type" style="font-size: 17px"><b>soil type</b></label>
+      <input type="text"  class="form-control" id="soil_type" name="soil_type" placeholder="Enter sandy/loamy/red" style="font-weight: bold" required="">
+    </div>
+    <!-- <div class="form-group">
+      <label for="soil_type" style="font-size: 17px"><b>Soil Type</b></label>
+      <select  id="soil_type" name="soil_type" class="form-control" style="font-weight: bold; color: black" required=""><option value="sandy">Select soiltype<option value="sandy">sandy</option><option value="loamy">loamy</option><option value="clayey">clayey</option><option value="red">red</option><option value="black">black</option></select>
+      <br>
+      </div> -->
+    <!-- <div class="form-group">
+      <label for="State" style="font-size: 17px"><b>State</b></label>
+      <select onchange="print_city('state', this.selectedIndex);" id="sts" name="stt" class="form-control" style="font-weight: bold; color: black" required=""><option value="">Select State</option><option value="Andaman &amp; Nicobar">Andaman &amp; Nicobar</option><option value="Andhra Pradesh">Andhra Pradesh</option><option value="Arunachal Pradesh">Arunachal Pradesh</option><option value="Assam">Assam</option><option value="Bihar">Bihar</option><option value="Chandigarh">Chandigarh</option><option value="Chhattisgarh">Chhattisgarh</option><option value="Dadra &amp; Nagar Haveli">Dadra &amp; Nagar Haveli</option><option value="Daman &amp; Diu">Daman &amp; Diu</option><option value="Delhi">Delhi</option><option value="Goa">Goa</option><option value="Gujarat">Gujarat</option><option value="Haryana">Haryana</option><option value="Himachal Pradesh">Himachal Pradesh</option><option value="Jammu &amp; Kashmir">Jammu &amp; Kashmir</option><option value="Jharkhand">Jharkhand</option><option value="Karnataka">Karnataka</option><option value="Kerala">Kerala</option><option value="Lakshadweep">Lakshadweep</option><option value="Madhya Pradesh">Madhya Pradesh</option><option value="Maharashtra">Maharashtra</option><option value="Manipur">Manipur</option><option value="Meghalaya">Meghalaya</option><option value="Mizoram">Mizoram</option><option value="Nagaland">Nagaland</option><option value="Orissa">Orissa</option><option value="Pondicherry">Pondicherry</option><option value="Punjab">Punjab</option><option value="Rajasthan">Rajasthan</option><option value="Sikkim">Sikkim</option><option value="Tamil Nadu">Tamil Nadu</option><option value="Tripura">Tripura</option><option value="Uttar Pradesh">Uttar Pradesh</option><option value="Uttaranchal">Uttaranchal</option><option value="West Bengal">West Bengal</option></select>
+      <br>
+      <label for="City" style="font-size: 17px"><b>City</b></label>
+      <select id="state" class="form-control" name="city" style="font-weight: bold; color: black" ></select>
+      <script language="javascript">
+        print_state("sts");
+      </script>
+    </div> -->
+
+    <div class="d-flex justify-content-center">
+      <button type="submit" class="btn btn-info" style="
+          color: black;
+          font-weight: bold;
+          width: 130px;
+          height: 50px;
+          border-radius: 12px;
+          font-size: 21px;
+        ">
+        Predict
+      </button>
+    </div>
+  </form>
+</div>
+</body>
+</html>

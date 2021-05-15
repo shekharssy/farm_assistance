@@ -1,0 +1,198 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+  <!-- Required meta tags -->
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <!-- Bootstrap CSS -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta3/dist/css/bootstrap.min.css" rel="stylesheet"
+    integrity="sha384-eOJMYsd53ii+scO/bJGFsiCZc+5NDVN2yr8+0RDqr0Ql0h+rP48ckxlpbzKgwra6" crossorigin="anonymous">
+
+  <title>home!</title>
+</head>
+
+<body style="background-image: url(/static/crop4.png); background-attachment: fixed;">
+  <div class="fixed-top">
+    <nav class="navbar navbar-expand-lg navbar-white bg-light">
+      <div class="container-fluid">
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+          <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+            <li class="nav-item">
+              <a class="nav-link active" aria-current="page" href="#">Home</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="/crop" onclick="crop_pred()">crop</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="/fertilizer" onclick="fert_pred()">fertilizer</a>
+            </li>
+          </ul>
+          <form class="d-flex">
+            <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
+            <button class="btn btn-outline-success" type="submit">Search</button>
+          </form>
+        </div>
+      </div>
+    </nav>
+  </div>
+  <div class="container my-5">
+    <div class="jumbotron p-4 p-md-5 text-white  rounded ">
+      <div class="col-md-12 px-0">
+        <br>
+        <br>
+        <br>
+        <br>
+        <h1 class="display-4 font-italic" style="text-align: center;">crop and fertilizer recommendation system</h1>
+        <p class="lead my-3">
+          India is one among the oldest countries which is stillpracticing agriculture. But in recent times the trends in
+          agriculture has drastically evolved due to globalization. 
+          Various factors have affected the health of agriculture in
+          India. Many new technologies have been evolved to regain 
+          the health. One such technique is precision agriculture.Precision agriculture is budding in India .Precisionagriculture is the technology of “site-specific” farming. It
+          has provided us with the advantage of efficient input, output
+          and better decisions regarding farming. Although precision
+          agriculture has delivered better improvements it is still 
+          facing certain issues. There exist many systems which
+          propose the inputs for a particular farming land. Systems
+          </p>
+        <p class="lead mb-0"><a href="#" class="text-white font-weight-bold">Continue reading...</a></p>
+      </div>
+    </div>
+  </div>
+  <div class="container-fluid  bg-light">
+    <section class="core-value py-5">
+      <div class="container py-md-4">
+        <h3 class="heading mb-sm-5 mb-4 text-center"> About Us</h3>
+        <div class="row core-grids">
+          <div class="col-lg-6 core-left">
+            <img src="../static/crop1.png" class="img-fluid" alt="">
+          </div>
+          <div class="col-lg-6 core-right">
+            <h3 class="mt-4">Improving Agriculture, Improving Lives, Cultivating Crops To Make Farmers Increase
+              Profit.</h3>
+            <p class="mt-3">We use state-of-the-art machine learning and deep learning technologies to help you
+              guide through
+              the entire farming process. Make informed decisions to understand the demographics of your area,
+              understand the
+              factors that affect your crop and keep them healthy for a super awesome successful yield.</p>
+          </div>
+        </div>
+      </div>
+      <div class="container-fluid my-5 bg-light">
+    </section>
+    <h3 class="heading mb-sm-5 mb-4 text-center">Our Services</h3>
+    <div class="row mb-6 my-1">
+      <div class="col-md-6">
+        <div
+          class="row no-gutters border rounded overflow-hidden flex-md-row mb-4 shadow-sm h-md-250 position-relative">
+          <div class="col p-4 d-flex flex-column position-static">
+            <strong class="d-inline-block mb-2 text-primary">Crop</strong>
+            <h3 class="mb-0">Crop prediction</h3>
+            <p class="card-text mb-auto">here we are gonna predict crop based on features like temperature, moisture ,
+              humidity</p>
+            <a href="/crop" class="stretched-link">Continue for prediction</a>
+          </div>
+          <div class="col-auto d-none d-lg-block">
+            <!-- <svg class="bd-placeholder-img" width="200" height="250" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Placeholder: Thumbnail" preserveAspectRatio="xMidYMid slice" focusable="false"><title>Placeholder</title><rect width="100%" height="100%" fill="#55595c"></rect><text x="50%" y="50%" fill="#eceeef" dy=".3em">Thumbnail</text></svg> -->
+            <a href="/crop">
+            <img class="bd-placeholder-img" width="250" height="250" src="../static/crop3.png" alt="crop" srcset="">
+          </a>
+          </div>
+        </div>
+      </div>
+      <div class="col-md-6 my-1">
+        <div
+          class="row no-gutters border rounded overflow-hidden flex-md-row mb-4 shadow-sm h-md-250 position-relative">
+          <div class="col p-4 d-flex flex-column position-static">
+            <strong class="d-inline-block mb-2 text-success">Fertilizer</strong>
+            <h3 class="mb-0">Fertilizer Prediction</h3>
+            <p class="mb-auto">here we will predict appropriate fertilizer based on the selection of crop.</p>
+            <a href="/fertilizer" class="stretched-link">Continue for fertilizer prediction</a>
+          </div>
+          <div class="col-auto d-none d-lg-block">
+            <!-- <svg class="bd-placeholder-img" width="200" height="250" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Placeholder: Thumbnail" preserveAspectRatio="xMidYMid slice" focusable="false"><title>Placeholder</title><rect width="100%" height="100%" fill="#55595c"></rect><text x="50%" y="50%" fill="#eceeef" dy=".3em">Thumbnail</text></svg> -->
+            <img class="bd-placeholder-img" width="250" height="250" src="../static/crop2.png" alt="crop" srcset=""
+              href="/fertilizer">
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <!-- Footer -->
+  <footer class="bg-dark text-center text-white text-lg-start">
+    <!-- Grid container -->
+    <div class="container p-4">
+      <!--Grid row-->
+      <div class="row">
+        <!--Grid column-->
+        <div class="col-lg-6 col-md-12 mb-4 mb-md-0">
+          <h5 class="text-uppercase">Footer Content</h5>
+        </div>
+        <!--Grid column-->
+
+        <!--Grid column-->
+        <div class="col-lg-3 col-md-6 mb-4 mb-md-0">
+          <h5 class="text-uppercase">Links</h5>
+
+          <ul class="list-unstyled mb-0">
+            <li>
+              <a href="#!" class="text-dark">Link 1</a>
+            </li>
+            <img src="../static/fb.png" height="100px" width="100px" alt="fb logo" srcset="">
+          </ul>
+        </div>
+        <!--Grid column-->
+
+        <!--Grid column-->
+        <div class="col-lg-3 col-md-6 mb-4 mb-md-0">
+          <h5 class="text-uppercase mb-0">Links</h5>
+
+          <ul class="list-unstyled">
+            <li>
+              <a href="#!" class="text-dark">Link 1</a>
+            </li>
+            <li>
+              <a href="#!" class="text-dark">Link 2</a>
+            </li>
+            <li>
+              <a href="#!" class="text-dark">Link 3</a>
+            </li>
+            <li>
+              <a href="#!" class="text-dark">Link 4</a>
+            </li>
+          </ul>
+        </div>
+        <!--Grid column-->
+      </div>
+      <!--Grid row-->
+    </div>
+    <!-- Grid container -->
+
+    <!-- Copyright -->
+    <div class="text-center p-3" style="background-color: rgba(0, 0, 0, 0.2);">
+      © 2020 Copyright:
+      <a class="text-dark" href="https://mdbootstrap.com/">MDBootstrap.com</a>
+    </div>
+    <!-- Copyright -->
+  </footer>
+  <!-- Footer -->
+
+
+
+  <!-- Optional JavaScript; choose one of the two! -->
+
+  <!-- Option 1: Bootstrap Bundle with Popper -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta3/dist/js/bootstrap.bundle.min.js"
+    integrity="sha384-JEW9xMcG8R+pH31jmWH6WWP0WintQrMb4s7ZOdauHnUtxwoG2vI5DkLtS3qm9Ekf"
+    crossorigin="anonymous"></script>
+
+  <!-- Option 2: Separate Popper and Bootstrap JS -->
+  <!--
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.1/dist/umd/popper.min.js" integrity="sha384-SR1sx49pcuLnqZUnnPwx6FCym0wLsk5JZuNx2bPPENzswTNFaQU1RDvt3wT4gWFG" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta3/dist/js/bootstrap.min.js" integrity="sha384-j0CNLUeiqtyaRmlzUHCPZ+Gy5fQu0dQ6eZ/xAww941Ai1SxSY+0EQqNXNE6DZiVc" crossorigin="anonymous"></script>
+    -->
+</body>
+
+</html>
