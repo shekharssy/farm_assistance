@@ -138,8 +138,8 @@ def crop_pred():
 def fert_pred():
     return render_template('fertilizer.html')
 
-app.run(port = 3000,host = "127.0.0.1")
+# app.run(port = 3000,host = "127.0.0.1")
 # app = flask.Flask(__name__)
-# if __name__== '__main__':
-#     app.run(debug=True)
+if __name__== '__main__':
+    app.run(debug=True)
 
