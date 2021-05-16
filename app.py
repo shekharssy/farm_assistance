@@ -22,6 +22,17 @@ crop_name = ""
 @app.route('/crop_predict',methods = ['GET','POST'])
 def PredictCrop():
     try:
+        user_api="a63eabe6f13509c1a830f1c4238d7a03"
+        # location=input("enter the city")
+        location=request.form["Location"]
+        api_link="https://api.openweathermap.org/data/2.5/weather?q="+location+"&appid="+user_api
+        api_data_comp=requests.get(api_link)
+        api_data=api_data_comp.json()
+        temp=math.floor((api_data['main']['temp']) -273.15)
+        hum=(api_data['main']['humidity'])
+    except:
+        temp,hum=30,22
+    try:
         random.seed(datetime.now())
         global N,P,K,ph
         first = request.form["nitrogen"]
@@ -33,12 +44,12 @@ def PredictCrop():
             ph = float(request.form["ph"])
             
             rainfall = float(request.form["rainfall"])
-            hum = float(request.form["humidity"])
-            temp = float(request.form["temperature"])
+#             hum = float(request.form["humidity"])
+#             temp = float(request.form["temperature"])
             
             soilType=request.form["soil_type"]
         except:
-            N,P,K,ph,temp,hum,rainfall,soilType = 2,44,60,5.5,30,22,150,"sandy"
+            N,P,K,ph,rainfall,soilType = 2,44,60,5.5,150,"sandy"
         a = {}
         a['N'] = N
         a['P'] = P 
