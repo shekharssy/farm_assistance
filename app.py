@@ -76,7 +76,7 @@ def PredictCrop():
         # temp1 = df[df['Crop']==crop_name]['soil_moisture']
         # soil_moisture = temp1.iloc[0]
         crop_name = crop_name.title()
-#         response = {'crop': str(crop_name)}
+        response = {'crop': str(crop_name)}
         response = json.dumps(response)
         return render_template('crop_res.html', response=crop_name)
     except Exception as e:
