@@ -121,8 +121,7 @@ def FertRecommend():
     fert_name = svm_model.predict(new_df1)[0]
 
    
-    return render_template('fert_res.html', response=fert_name)
-    
+    return render_template('fert_res.html', response=fert_name)    
 
 
 
