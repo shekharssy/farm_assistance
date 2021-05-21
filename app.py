@@ -4,6 +4,7 @@ from flask import render_template
 import logging
 import pickle
 import pandas as pd
+import numpy as np
 from datetime import datetime
 import random
 import json
@@ -33,6 +34,17 @@ def PredictCrop():
     except:
         temp,hum=30,22
     try:
+        rf=pd.read_csv("Datasets/Rainfall.csv")
+        da=np.asarray(rf)
+        for i in da:
+            if i[0]==location:
+                rainfall=math.floor(float(i[14]/12))
+        for i in da:
+            if i[1]==location:
+                rainfall=math.floor(float(i[14]/12))
+    except:
+        rainfall=222
+    try:
         random.seed(datetime.now())
         global N,P,K,ph
         first = request.form["nitrogen"]
@@ -43,13 +55,13 @@ def PredictCrop():
             K = float(request.form["pottasium"])
             ph = float(request.form["ph"])
             
-            rainfall = float(request.form["rainfall"])
+#             rainfall = float(request.form["rainfall"])
 #             hum = float(request.form["humidity"])
 #             temp = float(request.form["temperature"])
             
             soilType=request.form["soil_type"]
         except:
-            N,P,K,ph,rainfall,soilType = 2,44,60,5.5,150,"sandy"
+            N,P,K,ph,soilType = 2,44,60,5.5,"sandy"
         a = {}
         a['N'] = N
         a['P'] = P 
