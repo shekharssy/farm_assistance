@@ -89,7 +89,18 @@ def PredictCrop():
         crop_name = crop_name.title()
         response = {'crop': str(crop_name)}
         response = json.dumps(response)
-        return render_template('crop_res.html', response=crop_name)
+        try:
+            user_api1="6LdWHeIaAAAAAC5LhQfCr8sdIJhffpAA-fsS22aS"
+            locatio=request.form["g-recaptcha"]
+            api_link1="https://www.google.com/recaptcha/api/siteverify?secret="+user_api1+"&response="+locatio
+            api_data_comp1=requests.get(api_link1)
+            api_data1=api_data_comp1.json()
+            if api_data1['success']:
+                return render_template('crop_res.html', response=crop_name)
+            else:
+                return render_template('error.html')
+        except:
+            return render_template('crop_res.html', response=crop_name)
     except Exception as e:
         return "Caught err "+str(e)
         
