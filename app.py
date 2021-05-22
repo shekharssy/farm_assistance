@@ -34,6 +34,7 @@ def PredictCrop():
     except:
         temp,hum=30,22
     try:
+        location.upper()
         rf=pd.read_csv("Datasets/Rainfall.csv")
         da=np.asarray(rf)
         for i in da:
