@@ -91,7 +91,7 @@ def PredictCrop():
 
         new_df = pd.DataFrame(a, columns = ['N','P','K','temperature','humidity','ph','rainfall','black','clayey','loamy','red','sandy'],index = [0])
         #print(new_df)
-        NB_pkl_filename = 'RandForest.pkl'
+        NB_pkl_filename = 'RanForest.pkl'
         NB_pkl = open(NB_pkl_filename, 'rb')
         NB_model = pickle.load(NB_pkl)
         global crop_name
