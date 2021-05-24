@@ -32,7 +32,7 @@ def PredictCrop():
         temp=math.floor((api_data['main']['temp']) -273.15)
         hum=(api_data['main']['humidity'])
     except:
-        temp,hum=30,22
+        temp,hum=25,30
     try:
         location=location.upper()
         rf=pd.read_csv("Datasets/Rainfall.csv")
@@ -62,7 +62,7 @@ def PredictCrop():
             
             soilType=request.form["soil_type"]
         except:
-            N,P,K,ph,soilType = 2,44,60,5.5,"sandy"
+            N,P,K,ph,soilType = 100,440,600,5.5,"sandy"
         a = {}
         a['N'] = N
         a['P'] = P 
