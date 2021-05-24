@@ -118,47 +118,50 @@ def PredictCrop():
         return "Caught err "+str(e)
 @app.route('/fertilizer_predict',methods = ['GET','POST'])
 def FertRecommend():
+    response = {'fertilizer': "urea"}
+    response = json.dumps(response)
+    return render_template('fert_res.html', response="urea")
     # global crop_name
-    try:
-        # df = pd.read_csv('Datasets/FertilizerData.csv')
-        fert = pd.read_csv('Datasets/Fertilizer.csv')
-        cp1=request.form["crop"]
-        cp=cp1.capitalize()
-        # return render_template('fert_res.html', response=cp)
-        N=fert.loc[fert['Crop']==cp].iloc[0][2]
-        P=fert.loc[fert['Crop']==cp].iloc[0][3]
-        K=fert.loc[fert['Crop']==cp].iloc[0][4]
+#     try:
+#         # df = pd.read_csv('Datasets/FertilizerData.csv')
+#         fert = pd.read_csv('Datasets/Fertilizer.csv')
+#         cp1=request.form["crop"]
+#         cp=cp1.capitalize()
+#         # return render_template('fert_res.html', response=cp)
+#         N=fert.loc[fert['Crop']==cp].iloc[0][2]
+#         P=fert.loc[fert['Crop']==cp].iloc[0][3]
+#         K=fert.loc[fert['Crop']==cp].iloc[0][4]
         
-        nr = float(request.form["nitrogen"])
-        pr = float(request.form["phosphorous"])
-        kr = float(request.form["pottasium"])       
-    except:
-        nr = 180
-        pr = 70
-        kr = 40
-        N=10
-        P=20
-        K=10
-    # global N,P,K
-    n = nr - N
-    p = pr - P
-    k = kr - K
+#         nr = float(request.form["nitrogen"])
+#         pr = float(request.form["phosphorous"])
+#         kr = float(request.form["pottasium"])       
+#     except:
+#         nr = 180
+#         pr = 70
+#         kr = 40
+#         N=10
+#         P=20
+#         K=10
+#     # global N,P,K
+#     n = nr - N
+#     p = pr - P
+#     k = kr - K
     
-    temp2 = {abs(n) : "N",abs(p) : "P", abs(k) :"K"}
-    b={}
-    b['N']=n
-    b['P']=p
-    b['K']=k
-    new_df1 = pd.DataFrame(b, columns = ['N','P','K'], index=[0])
-    NB_pk_filename = 'svm_fert.pkl'
-    NB_pkl = open(NB_pk_filename, 'rb')
-    svm_model = pickle.load(NB_pkl)
-    # global fert_name
+#     temp2 = {abs(n) : "N",abs(p) : "P", abs(k) :"K"}
+#     b={}
+#     b['N']=n
+#     b['P']=p
+#     b['K']=k
+#     new_df1 = pd.DataFrame(b, columns = ['N','P','K'], index=[0])
+#     NB_pk_filename = 'svm_fert.pkl'
+#     NB_pkl = open(NB_pk_filename, 'rb')
+#     svm_model = pickle.load(NB_pkl)
+#     # global fert_name
     
-    fert_name = svm_model.predict(new_df1)[0]
+#     fert_name = svm_model.predict(new_df1)[0]
 
    
-    return render_template('fert_res.html', response=fert_name)    
+        
 
 
 
