@@ -34,7 +34,7 @@ def PredictCrop():
     except:
         temp,hum=30,22
     try:
-        location.upper()
+        location=location.upper()
         rf=pd.read_csv("Datasets/Rainfall.csv")
         da=np.asarray(rf)
         for i in da:
@@ -116,10 +116,9 @@ def PredictCrop():
             return render_template('crop_res.html', response=crop_name)
     except Exception as e:
         return "Caught err "+str(e)
-        
 @app.route('/fertilizer_predict',methods = ['GET','POST'])
 def FertRecommend():
-#     global crop_name
+    # global crop_name
     try:
         # df = pd.read_csv('Datasets/FertilizerData.csv')
         fert = pd.read_csv('Datasets/Fertilizer.csv')
@@ -137,9 +136,9 @@ def FertRecommend():
         nr = 180
         pr = 70
         kr = 40
-        N =30
-        P =20
-        K =40
+        N=10
+        P=20
+        K=10
     # global N,P,K
     n = nr - N
     p = pr - P
@@ -154,7 +153,7 @@ def FertRecommend():
     NB_pk_filename = 'svm_fert.pkl'
     NB_pkl = open(NB_pk_filename, 'rb')
     svm_model = pickle.load(NB_pkl)
-#     global fert_name
+    # global fert_name
     
     fert_name = svm_model.predict(new_df1)[0]
 
